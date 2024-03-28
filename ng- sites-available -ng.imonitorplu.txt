@@ -1,0 +1,247 @@
+ng- sites-available -ng.imonitorplus.com
+server {
+         listen 443 ssl;
+         server_name ng.imonitorplus.com;
+         ssl_certificate /etc/nginx/ssl/ng.imonitorplus.com/combined;
+         ssl_certificate_key /etc/nginx/ssl/ng.imonitorplus.com/private;
+         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+         ssl_ciphers HIGH:!aNULL:!MD5;
+         access_log /var/log/nginx/ng.imonitorplus.com.access;
+         error_log /var/log/nginx/ng.imonitorplus.com.error error;
+         underscores_in_headers on;
+
+
+         location / {
+            root /var/www/ng.imonitorplus.com/html;
+            error_page 404 /;
+            error_page 403 = 404;
+         }
+         location /service {
+          proxy_pass                http://10.0.0.4:8092/service;
+
+        }
+         location /service_redis {
+          proxy_pass                http://10.0.0.4:8157/service_redis;
+        }
+         location /myrights/ {
+          proxy_pass                http://10.0.0.4:8100/myrights/;
+
+        }
+        location /product/dashboard/login {
+          try_files $uri  /product/dashboard;
+        }
+        location /product/dashboard/firstTimeLogin {
+          try_files $uri  /product/dashboard;
+        }
+        location /product/dashboard/register {
+          try_files $uri  /product/dashboard;
+        }
+        location /product/dashboard/home {
+          try_files $uri  /product/dashboard;
+        }
+        location /product/clmsurvey/login {
+          try_files $uri  /product/clmsurvey;
+        }
+        location /imonitorplusunaids/login {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/home {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/overview {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/analytics {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/reportedchallenges {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/demographicprofile {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/resolution {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/responseefficiency {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/surveyindicators {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/serviceindicators {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/communitydemographics {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/maps {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/inbox {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/setup {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/translation {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/forummanagement {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/configurefilter {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/managecomponents {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/rolemanagement {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/adduser {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/configuremap {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/operationaloverview {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/communitylinelist {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /imonitorplusunaids/advanceoverview {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /dashboardv2/login {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/home {
+          try_files $uri  /dashboardv2/;
+        }
+        location /product/dashboard/communitylinelist {
+          try_files $uri  /product/dashboard/;
+        }
+        location /product/dashboard/operationaloverview {
+          try_files $uri  /product/dashboard/;
+        }
+        location /dashboardv2/operationaloverview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/operationalstatistics {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/inbox {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/setup {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/translation {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/forummanagement {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/managecomponents {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/rolemanagement {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/adduser {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/configuremap {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/communitybroadcast {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/overview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/analytics {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/reportedchallenges {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/communitylinelist {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/facilitylinelist {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/demographicprofile {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/resolution {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/responseefficiency {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/surveyindicators {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/serviceindicators {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/communitydemographics {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/dashboardoverview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/maps {
+          try_files $uri  /dashboardv2/;
+        }
+        location /myrightsdashboard/login {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/home {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/inbox {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/userchat {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/indicatoroverview {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/map {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/analytics {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/tracker {
+          try_files $uri  /myrightsdashboard/;
+        }
+        location /myrightsdashboard/cfperformancetracker {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/setup {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/translation {
+          try_files $uri  /myrightsdashboard/;
+        }
+
+        location /myrightsdashboard/adduser {
+          try_files $uri  /myrightsdashboard/;
+        }
+

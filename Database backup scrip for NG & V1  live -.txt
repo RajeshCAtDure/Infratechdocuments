@@ -1,0 +1,21 @@
+Database backup scrip for NG live -
+
+sh Ngdatabase.sh
+#!/bin/bash
+datetime=$(date +'%Y-%m-%d-%H_%M_%S')
+mongodump --uri mongodb+srv://salesadmin:RI9h6Xu5Imc1Ewue@cluster1-pri.ngg18.mongodb.net/imonsales --out imonsales-$datetime
+sleep 3
+zip -r imonsales-$datetime.zip imonsales-$datetime
+rm -rf imonsales-$datetime
+
+*********************************************************************************
+Database backup scrip for V1 live -
+sh V1databasebackup.sh
+#!/bin/bash
+datetime=$(date +'%Y-%m-%d-%H_%M_%S')
+mongodump --uri mongodb+srv://imonusr:sQR0AOq6vMylcjWw@cluster0-pri.ngg18.azure.mongodb.net/nxtgenimonlive --out nxtgenimonlive-$datetime
+sleep 3
+zip -r nxtgenimonlive-$datetime.zip nxtgenimonlive-$datetime
+rm -rf nxtgenimonlive-$datetime
+
+***********************************************************************************

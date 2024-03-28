@@ -1,0 +1,322 @@
+[root@v1live sites-available]# cat v1.nextgen.imonitorplus.com
+server {
+         listen 443 ssl;
+         server_name v1.nextgen.imonitorplus.com;
+         ssl_certificate /etc/nginx/ssl/v1.nextgen.imonitorplus.com/combined;
+         ssl_certificate_key /etc/nginx/ssl/v1.nextgen.imonitorplus.com/private;
+         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+         ssl_ciphers HIGH:!aNULL:!MD5;
+         access_log /var/log/nginx/v1.nextgen.imonitorplus.com.access;
+         error_log /var/log/nginx/v1.nextgen.imonitorplus.com.error error;
+         underscores_in_headers on;
+         location / {
+            root /var/www/v1.nextgen.imonitorplus.com/html;
+            error_page 404 /;
+            error_page 403 = 404;
+         }
+        location /uatdashboardplus/login {
+          try_files $uri $uri/  /uatdashboardplus;
+        }
+         location /service {
+          proxy_pass                http://10.0.0.4:8096/service;
+
+        }
+         location /uatservice {
+          proxy_pass                http://10.0.0.4:8104/uatservice;
+
+         }
+         location /v1liveqtz {
+          proxy_pass                http://10.0.0.4:8120/v1liveqtz;
+
+         }
+        location /dashboardnewtheme/login {
+          try_files $uri  /dashboardnewtheme/;
+        }
+        location /dashboardnewtheme/advanceoverview {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/operationaloverview {
+          try_files $uri  /dashboardnewtheme/;
+        }
+        location /dashboardv2/firstTimeLogin {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/configurefilter {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/configuremap {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/userview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/mneclmreport {
+          try_files $uri  /dashboardv2/;
+        }
+         location /dashboardv2/clmdashboard {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/interventions {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/accessconfiguration {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/organizations {
+          try_files $uri  /dashboardv2/;
+        }
+         location /dashboardv2/userusage {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/surveyindicators {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/demographicprofile {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/casestatistics {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardnewtheme/inbox {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/setup {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+
+        location /dashboardnewtheme/translation {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/managecomponents {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/rolemanagement {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/adduser {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/communitybroadcast {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboardnewtheme/home {
+          try_files $uri  /dashboardnewtheme/;
+        }
+
+        location /dashboard/login {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboardv2/login {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboard/home {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/dashboardoverview {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/reportedchallenges {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/facilitylinelist {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/communitylinelist {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/demographicprofile {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/responseefficiency {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/resolution {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/surveyindicators {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/communitydemographics {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/maps {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/analytics {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/operationaloverview {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/operationalstatistics {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/inbox {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/userchat {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/setup {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/forummanagement {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/configurefilter {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/managecomponents {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/rolemanagement {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/adduser {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/communitybroadcast {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/configuremap {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/translation {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/firstTimelogin {
+          try_files $uri  /dashboard/;
+        }
+        location /dashboard/overview {
+          try_files $uri  /dashboard/;
+        }
+        location /laportbdashboard/login {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/advanceoverview {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/operationaloverview {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/inbox {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/communitylinelist {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/setup {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/translation {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/managecomponents {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/rolemanagement {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /laportbdashboard/adduser {
+          try_files $uri  /laportbdashboard/;
+        }
+        location /imonitorplusunaids/* {
+          try_files $uri  /imonitorplusunaids/;
+        }
+        location /dashboardV2/login {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/home {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/advanceoverview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/operationaloverview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/analytics {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/responsedashboard {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/communitylinelist {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/interventions {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/setup {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/managecomponents {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/rolemanagement {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/adduser {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardV2/communitybroadcast {
+          try_files $uri  /dashboardV2/;
+        }
+        location /laportbdashboardv2/login {
+          try_files $uri  /laportbdashboardv2/;
+        }
+        location /dashboardv2/advanceoverview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/home {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/operationaloverview {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/communitylinelist {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/responsedashboard {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/analytics {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/setup {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/translation {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/managecomponents {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/rolemanagement {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/adduser {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/communitybroadcast {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/register {
+          try_files $uri  /dashboardv2/;
+        }
+
+        location /dashboardv2/forummanagement {
+          try_files $uri  /dashboardv2/;
+        }
+        location /dashboardv2/forgotPassword {
+          try_files $uri  /dashboardv2/;
+        }
+}
